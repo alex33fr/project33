@@ -3,9 +3,15 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Exception;
+use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ProductRepository")
+ * @ORM\Table(name="product")
+ * @Vich\Uploadable
  */
 class Product
 {
@@ -20,6 +26,28 @@ class Product
      * @ORM\Column(type="string", length=255)
      */
     private $title;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $imageName;
+
+    /**
+     * @Vich\UploadableField(mapping="product", fileNameProperty="imageName", size="imageSize")
+     *
+     * @var File|null
+     */
+    private $imageFile;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $imageSize;
+
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private $updatedAt;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
@@ -47,18 +75,15 @@ class Product
     private $createdAt;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\SubSubCategory", inversedBy="Products")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Category", inversedBy="products")
+     * @ORM\JoinColumn(nullable=false)
      */
-    private $subSubCategory;
+    private $category;
 
-    /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\SubCategory", inversedBy="Products")
-     */
-    private $subCategory;
-
-    public function __construct()
+    function __construct()
     {
         $this->createdAt = new \DateTime();
+        $this->updatedAt = new \DateTime();
     }
 
     public function getId(): ?int
@@ -74,6 +99,60 @@ class Product
     public function setTitle(string $title): self
     {
         $this->title = $title;
+
+        return $this;
+    }
+
+    public function getImageName(): ?string
+    {
+        return $this->imageName;
+    }
+
+    public function setImageName(?string $imageName): self
+    {
+        $this->imageName = $imageName;
+
+        return $this;
+    }
+
+    /**
+     * @param File|UploadedFile|null $imageFile
+     * @throws Exception
+     */
+    public function setImageFile(?File $imageFile = null): void
+    {
+        $this->imageFile = $imageFile;
+
+        if (null !== $imageFile) {
+            $this->updatedAt = new \DateTimeImmutable();
+        }
+    }
+
+    public function getImageFile(): ?File
+    {
+        return $this->imageFile;
+    }
+
+    public function getImageSize(): ?int
+    {
+        return $this->imageSize;
+    }
+
+    public function setImageSize(?int $imageSize): self
+    {
+        $this->imageSize = $imageSize;
+
+        return $this;
+    }
+
+    public function getUpdatedAt(): ?\DateTimeInterface
+    {
+        return $this->updatedAt;
+    }
+
+    public function setUpdatedAt(?\DateTimeInterface $updatedAt): self
+    {
+        $this->updatedAt = $updatedAt;
 
         return $this;
     }
@@ -138,26 +217,14 @@ class Product
         return $this;
     }
 
-    public function getSubSubCategory(): ?SubSubCategory
+    public function getCategory(): ?Category
     {
-        return $this->subSubCategory;
+        return $this->category;
     }
 
-    public function setSubSubCategory(?SubSubCategory $subSubCategory): self
+    public function setCategory(?Category $category): self
     {
-        $this->subSubCategory = $subSubCategory;
-
-        return $this;
-    }
-
-    public function getSubCategory(): ?SubCategory
-    {
-        return $this->subCategory;
-    }
-
-    public function setSubCategory(?SubCategory $subCategory): self
-    {
-        $this->subCategory = $subCategory;
+        $this->category = $category;
 
         return $this;
     }

@@ -10,6 +10,9 @@
             <tr>
                 <th>Id</th>
                 <th>Title</th>
+                <th>ImageName</th>
+                <th>ImageSize</th>
+                <th>UpdatedAt</th>
                 <th>Model</th>
                 <th>Color</th>
                 <th>DescOne</th>
@@ -23,6 +26,9 @@
             <tr>
                 <td>{{ product.id }}</td>
                 <td>{{ product.title }}</td>
+                <td>{{ product.imageName }}</td>
+                <td>{{ product.imageSize }}</td>
+                <td>{{ product.updatedAt ? product.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
                 <td>{{ product.model }}</td>
                 <td>{{ product.color }}</td>
                 <td>{{ product.descOne }}</td>
@@ -35,7 +41,7 @@
             </tr>
         {% else %}
             <tr>
-                <td colspan="8">no records found</td>
+                <td colspan="11">no records found</td>
             </tr>
         {% endfor %}
         </tbody>
