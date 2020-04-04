@@ -1,4 +1,5 @@
 @import "app.css";
+
 $btn-border-radius: 0.2rem;
 $red:     #da251c !default;
 
@@ -6,6 +7,7 @@ $red:     #da251c !default;
     font-family: 'Montserrat';
     src: url('/fonts/Montserrat_ru.ttf');
 }
+
 
 @import "~bootstrap/scss/bootstrap";
 .bg-danger {

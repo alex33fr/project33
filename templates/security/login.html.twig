@@ -1,28 +1,45 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Log in!{% endblock %}
+{% block title %}Вход!{% endblock %}
 
 {% block body %}
 <form method="post">
     {% if error %}
-        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+        <div class="alert alert-danger text-center">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
     {% endif %}
 
     {% if app.user %}
         <div class="mb-3">
-            You are logged in as {{ app.user.username }}, <a href="{{ path('app_logout') }}">Logout</a>
+            Вы уже вошли как {{ app.user.username }}, <a href="{{ path('app_logout') }}">Выйти?</a>
         </div>
     {% endif %}
 
-    <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-    <label for="inputEmail">Email</label>
-    <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" required autofocus>
-    <label for="inputPassword">Password</label>
-    <input type="password" name="password" id="inputPassword" class="form-control" required>
+    <div class="wrapper fadeInDown">
+        <div id="formContent">
+            <!-- Tabs Titles -->
+            <!-- Icon -->
+            <div class="fadeIn first">
+                <img src="{{ asset('images/logotype.png') }}" alt="Logotype" />
+                <h2>Окна Центр Продаж</h2>
+            </div>
+            <!-- Login Form -->
+            <div class="m-5 zindex">
+                <form>
+                    <label for="inputEmail">Емайл</label><input type="email" value="{{ last_username }}" id="inputEmail" class="fadeIn second form-control" name="email" placeholder="Емайл" required autofocus>
+                    <label for="inputPassword">Пароль</label><input type="password" id="inputPassword" class="fadeIn third form-control" name="password" placeholder="Пароль" required>
+                    <input type="hidden" class="fadeIn fourth" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+                    <button class="btn btn-lg btn-primary mt-2" type="submit">
+                        Войти
+                    </button>
+                </form>
+            </div>
+            <!-- Remind Passowrd -->
+            <div id="formFooter">
+                <a class="underlineHover" href="{{path('home')}}">Вернуться на сайт</a>
+            </div>
 
-    <input type="hidden" name="_csrf_token"
-           value="{{ csrf_token('authenticate') }}"
-    >
+        </div>
+    </div>
 
     {#
         Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
@@ -34,9 +51,5 @@
             </label>
         </div>
     #}
-
-    <button class="btn btn-lg btn-primary" type="submit">
-        Sign in
-    </button>
 </form>
 {% endblock %}

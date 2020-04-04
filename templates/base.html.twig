@@ -22,6 +22,9 @@
     <meta property="og:locale" content="ru_RU">
     <link rel="shortcut icon" href="{{ asset('images/icon/oknacentrprodaj-icon.ico') }}"/>
     <link rel="apple-touch-icon" href="{{ asset('images/icon/oknacentrprodaj-icon.ico')}}"/>
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/duotone.css" integrity="sha384-R3QzTxyukP03CMqKFe0ssp5wUvBPEyy9ZspCB+Y01fEjhMwcXixTyeot+S40+AjZ" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/fontawesome.css" integrity="sha384-eHoocPgXsiuZh+Yy6+7DsKAerLXyJmu2Hadh4QYyt+8v86geixVYwFqUvMU8X90l" crossorigin="anonymous"/>
     <title>{% block title %}Окна Центр пРодаж{% endblock %}</title>
     {% block stylesheets %}
         {{ encore_entry_link_tags('app') }}
@@ -75,27 +78,27 @@
 <nav class="navbar pb-2 pt-2 sticky-top navbar-expand-lg bg-white justify-content-center shadow-sm">
     <div>
         <ul class="nav font-weight-bold text-uppercase">
-{#            <li class="nav-item">#}
-{#                <a class="nav-link text-dark" href="{{ path('mainCategory_show', {'title': 'балконы'}) }}">БАЛКОНЫ</a>#}
-{#            </li>#}
-{#            <li class="nav-item">#}
-{#                <a class="nav-link text-dark" href="{{ path('mainCategory_show', {'title': 'двери'}) }}">ДВЕРИ</a>#}
-{#            </li>#}
-{#            <li class="nav-item">#}
-{#                <a class="nav-link text-dark" href="{{ path('mainCategory_show', {'title': 'потолки'}) }}">ПОТОЛКИ</a>#}
-{#            </li>#}
-{#            <li class="nav-item">#}
-{#                <a class="nav-link text-dark" href="{{ path('mainCategory_show', {'title': 'рольставни'}) }}">РОЛЬСТАВНИ</a>#}
-{#            </li>#}
-{#            <li class="nav-item">#}
-{#                <a class="nav-link text-dark" href="{{ path('mainCategory_show', {'title': 'жалюзи'}) }}">ЖАЛЮЗИ</a>#}
-{#            </li>#}
-{#            <li class="nav-item">#}
-{#                <a class="nav-link text-dark" href="{{ path('mainCategory_show', {'title': 'ворота'}) }}">ВОРОТА</a>#}
-{#            </li>#}
-{#            <li class="nav-item">#}
-{#                <a class="nav-link text-dark active" href="{{ path('mainCategory_show', {'title': 'стеллажи'}) }}">СТЕЛЛАЖИ</a>#}
-{#            </li>#}
+            <li class="nav-item">
+                <a class="nav-link text-dark" href="{{ path('home', {'title': 'балконы'}) }}">БАЛКОНЫ</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark" href="{{ path('home', {'title': 'двери'}) }}">ДВЕРИ</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark" href="{{ path('home', {'title': 'потолки'}) }}">ПОТОЛКИ</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark" href="{{ path('home', {'title': 'рольставни'}) }}">РОЛЬСТАВНИ</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark" href="{{ path('home', {'title': 'жалюзи'}) }}">ЖАЛЮЗИ</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark" href="{{ path('home', {'title': 'ворота'}) }}">ВОРОТА</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark active" href="{{ path('home', {'title': 'стеллажи'}) }}">СТЕЛЛАЖИ</a>
+            </li>
         </ul>
     </div>
 </nav>
@@ -155,15 +158,15 @@
                     <ul class="list-unstyled">
                         <li>
                             <p>
-                                <i class="fas fa-home mr-3"></i>2 этаж, ул.Пограничная д.32</p>
+                                <i class="fas fa-home mr-1"></i>2 этаж, ул.Пограничная д.32</p>
                         </li>
                         <li>
                             <p>
-                                <i class="fas fa-envelope mr-3"></i>contact@oknacentrprodaj.ru</p>
+                                <i class="fas fa-envelope mr-1"></i>contact@oknacentrprodaj.ru</p>
                         </li>
                         <li>
                             <p>
-                                <i class="fas fa-phone mr-3"></i>8 967 091 - 1000</p>
+                                <i class="fas fa-phone mr-1"></i>8 967 091 - 1000</p>
                         </li>
                     </ul>
 
@@ -205,7 +208,7 @@
         <!-- Footer Links -->
 
         <!-- Copyright -->
-        <div class="footer-copyright text-center py-3 mb-3">© 2020 Copyright:
+        <div class="footer-copyright text-center py-3 mb-3">© {{ "now"|date("Y") }} Все права принадлежат:
             <a href="https://oknacentrprodaj.ru/">oknacentrprodaj.ru</a>
         </div>
         <!-- Copyright -->
