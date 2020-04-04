@@ -1,12 +1,217 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
-    </body>
+<html lang="{{ app.request.locale }}" dir="ltr">
+<head prefix="og: http://ogp.me/ns#">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="yandex-verification" content="">{# // TODO add here Яндекс ключ inside "content"#}
+    <meta name="google-site-verification" content=""/>{# // TODO add here Гугл ключ inside "content"#}
+    <meta name="robots" content="all" /> {# // TODO amelieurer#}
+    <meta name="googlebot" content="all" /> {# // TODO amelieurer#}
+    <meta property="og:title" content="Окна двери в Москве, Сергиев Посад и МО, гарантия лучшей цены!">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="">{# // TODO add here logotype of your website inside "content"#}
+    <meta property="og:image:secure_url" content="https://secure.example.com/ogp.jpg" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="400" />
+    <meta property="og:image:height" content="300" />
+    <meta property="og:image:alt" content="A shiny red apple with a bite taken out" />
+    <meta property="og:url" content="https://www.oknacentrprodaj.ru/">
+    <meta property="og:description" content="Окна центр продаж предлагает установку окон ПВХ, остекление балконов и лоджии, откатные ворота и рольставни,
+             жалюзи, штакетники и фотозаборы, профнастил, водосточные трубы, стеллажи для гаража и подсобных помещений, а также межкомнатные и металлические двери.">
+    <meta property="og:locale" content="ru_RU">
+    <link rel="shortcut icon" href="{{ asset('images/icon/oknacentrprodaj-icon.ico') }}"/>
+    <link rel="apple-touch-icon" href="{{ asset('images/icon/oknacentrprodaj-icon.ico')}}"/>
+    <title>{% block title %}Окна Центр пРодаж{% endblock %}</title>
+    {% block stylesheets %}
+        {{ encore_entry_link_tags('app') }}
+    {% endblock %}
+</head>
+{% if is_granted('ROLE_ADMIN') %}
+    <nav class="navbar navbar-dark bg-dark justify-content-end">
+        <ul class="nav font-weight-lighter">
+            <li class="nav-item list-unstyled">
+                <a class="nav-link text-white" href="{{ path('back') }}">Панель управления</a>
+            </li>
+            <li class="nav-item list-unstyled">
+                <a class="nav-link text-white" href="{{ path('app_register') }}">Регистрация</a>
+            </li>
+            <li class="nav-item list-unstyled">
+                <a class="nav-link text-white" href="{{ path('app_logout') }}">Выйти</a>
+            </li>
+            <li class="nav-item list-unstyled">
+                <span class="nav-link mr-2 text-white">{% if is_granted("ROLE_ADMIN") %}{{ app.user.firstName ~ ' ' ~ app.user.secondName }}{% endif %}</span>
+            </li>
+        </ul>
+    </nav>
+{% endif %}
+<!-- HEADER NAVBAR -->
+<div class="container">
+    <div class="row mt-2 mb-2">
+        <div class="col-6">
+        </div>
+        <div class="col-3 text-center">
+            <button class="btn btn-outline-danger font-weight-bold shadow-sm" type="button">
+                <img src="{{ asset('images/icon/telephone.png') }}" class="mr-1" width="32" height="32" alt="Phone icon">
+                Заказать звонок</button>
+        </div>
+        <div class="col-3 text-center">
+            <button class="btn btn-outline-danger font-weight-bold shadow-sm" type="button">
+                <img src="{{ asset('images/icon/gps.png') }}"  class="mr-1" width="32" height="32" alt="Gps icon">
+                Найти наш офис</button>
+        </div>
+    </div>
+</div>
+<!-- HEADER NAVBAR -->
+
+<!-- NAVBAR -->
+<!-- BRAND -->
+<nav class="navbar navbar-default navbar-expand-lg bg-danger">
+    <a class="navbar-brand ml-5" href="{{ path('home') }}">
+        <img src="{{ asset('images/logotype.png') }}" width="300" height="101"
+             alt="Логотип Окна Центр Продаж">
+    </a>
+</nav>
+<nav class="navbar pb-2 pt-2 sticky-top navbar-expand-lg bg-white justify-content-center shadow-sm">
+    <div>
+        <ul class="nav font-weight-bold text-uppercase">
+{#            <li class="nav-item">#}
+{#                <a class="nav-link text-dark" href="{{ path('mainCategory_show', {'title': 'балконы'}) }}">БАЛКОНЫ</a>#}
+{#            </li>#}
+{#            <li class="nav-item">#}
+{#                <a class="nav-link text-dark" href="{{ path('mainCategory_show', {'title': 'двери'}) }}">ДВЕРИ</a>#}
+{#            </li>#}
+{#            <li class="nav-item">#}
+{#                <a class="nav-link text-dark" href="{{ path('mainCategory_show', {'title': 'потолки'}) }}">ПОТОЛКИ</a>#}
+{#            </li>#}
+{#            <li class="nav-item">#}
+{#                <a class="nav-link text-dark" href="{{ path('mainCategory_show', {'title': 'рольставни'}) }}">РОЛЬСТАВНИ</a>#}
+{#            </li>#}
+{#            <li class="nav-item">#}
+{#                <a class="nav-link text-dark" href="{{ path('mainCategory_show', {'title': 'жалюзи'}) }}">ЖАЛЮЗИ</a>#}
+{#            </li>#}
+{#            <li class="nav-item">#}
+{#                <a class="nav-link text-dark" href="{{ path('mainCategory_show', {'title': 'ворота'}) }}">ВОРОТА</a>#}
+{#            </li>#}
+{#            <li class="nav-item">#}
+{#                <a class="nav-link text-dark active" href="{{ path('mainCategory_show', {'title': 'стеллажи'}) }}">СТЕЛЛАЖИ</a>#}
+{#            </li>#}
+        </ul>
+    </div>
+</nav>
+<body>
+{% block body %}
+{% endblock %}
+</body>
+
+
+{% block javascripts %}
+    {{ encore_entry_script_tags('app') }}
+{% endblock %}
+
+
+{% block footer %}
+    <footer class="page-footer font-small mdb-color lighten-3 pt-4">
+        <div class="container text-center text-md-left">
+            <div class="row">
+                <div class="col-md-4 col-lg-3 mr-auto my-md-4 my-0 mt-4 mb-1">
+
+                    <h5 class="font-weight-bold text-uppercase mb-4">О компании</h5>
+                    <p>Here you can use rows and columns to organize your footer content.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit amet numquam iure provident voluptate
+                        esse
+                        quasi, veritatis totam voluptas nostrum.</p>
+
+                </div>
+                <!-- Grid column -->
+
+                <hr class="clearfix w-100 d-md-none">
+
+                <!-- Grid column -->
+                <div class="col-md-2 col-lg-2 mx-auto my-md-4 my-0 mt-4 mb-1">
+
+                    <!-- Links -->
+                    <h5 class="font-weight-bold text-uppercase mb-4">Категории</h5>
+
+                    <ul class="list-unstyled">
+                        <li>
+                            <p>
+                                <a href="{{ path('app_login') }}">Войти</a>
+                            </p>
+                        </li>
+                    </ul>
+
+                </div>
+                <!-- Grid column -->
+
+                <hr class="clearfix w-100 d-md-none">
+
+                <!-- Grid column -->
+                <div class="col-md-4 col-lg-3 mx-auto my-md-4 my-0 mt-4 mb-1">
+
+                    <!-- Contact details -->
+                    <h5 class="font-weight-bold text-uppercase mb-4">Где нас найти?</h5>
+
+                    <ul class="list-unstyled">
+                        <li>
+                            <p>
+                                <i class="fas fa-home mr-3"></i>2 этаж, ул.Пограничная д.32</p>
+                        </li>
+                        <li>
+                            <p>
+                                <i class="fas fa-envelope mr-3"></i>contact@oknacentrprodaj.ru</p>
+                        </li>
+                        <li>
+                            <p>
+                                <i class="fas fa-phone mr-3"></i>8 967 091 - 1000</p>
+                        </li>
+                    </ul>
+
+                </div>
+                <!-- Grid column -->
+
+                <hr class="clearfix w-100 d-md-none">
+
+                <!-- Grid column -->
+                <div class="col-md-2 col-lg-2 text-center mx-auto my-4">
+
+                    <!-- Social buttons -->
+                    <h5 class="font-weight-bold text-uppercase mb-4">Подпишись!</h5>
+
+                    <!-- Facebook -->
+                    <a type="button" class="btn-floating btn-fb">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <!-- Twitter -->
+                    <a type="button" class="btn-floating btn-tw">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <!-- Google +-->
+                    <a type="button" class="btn-floating btn-gplus">
+                        <i class="fab fa-google-plus-g"></i>
+                    </a>
+                    <!-- Dribbble -->
+                    <a type="button" class="btn-floating btn-dribbble">
+                        <i class="fab fa-dribbble"></i>
+                    </a>
+
+                </div>
+                <!-- Grid column -->
+
+            </div>
+            <!-- Grid row -->
+
+        </div>
+        <!-- Footer Links -->
+
+        <!-- Copyright -->
+        <div class="footer-copyright text-center py-3 mb-3">© 2020 Copyright:
+            <a href="https://oknacentrprodaj.ru/">oknacentrprodaj.ru</a>
+        </div>
+        <!-- Copyright -->
+
+    </footer>
+    <!-- Footer -->
+{% endblock %}
 </html>
+

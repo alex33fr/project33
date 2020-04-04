@@ -1,6 +1,11 @@
 @import "app.css";
-$btn-border-radius: 0.1rem;
+$btn-border-radius: 0.2rem;
 $red:     #da251c !default;
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url('/fonts/Montserrat_ru.ttf');
+}
 
 @import "~bootstrap/scss/bootstrap";
 .bg-danger {
@@ -9,5 +14,6 @@ $red:     #da251c !default;
 
 body {
     background-color: #FFFFFF;
+    font-family: 'Montserrat', serif;
 }
 
