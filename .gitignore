@@ -1,4 +1,6 @@
 .idea
+/public/images/category
+/public/images/products
 ###> symfony/framework-bundle ###
 /.env.local
 /.env.local.php
