@@ -1,7 +1,0 @@
-nav a {
-     transition: 0.5s ease;
-     border-bottom: 4px solid transparent;
- }
-nav a:hover {
-    border-bottom: 4px solid #da251c;
-}
