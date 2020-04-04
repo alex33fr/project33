@@ -19,6 +19,26 @@ class ProductRepository extends ServiceEntityRepository
         parent::__construct($registry, Product::class);
     }
 
+    /**
+     * @return Product[] Returns an array of Product objects
+     */
+
+    public function findByLeftAndRight($value1, $value2)
+    {
+        return $this->createQueryBuilder('p')
+            ->select('p.id','p.title','p.imageName','p.updatedAt','p.model','p.color','p.color','p.descOne','p.descTwo','p.createdAt')
+            ->distinct()
+            ->leftJoin('p.category', 'c')
+            ->andWhere('c.lft >= :val1')
+            ->andWhere('c.rgt <= :val2')
+            ->orderBy('p.id', 'ASC')
+            ->setParameter('val1', $value1)
+            ->setParameter('val2', $value2)
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
     // /**
     //  * @return Product[] Returns an array of Product objects
     //  */

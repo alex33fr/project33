@@ -19,6 +19,26 @@ class CategoryRepository extends ServiceEntityRepository
         parent::__construct($registry, Category::class);
     }
 
+    /**
+     * @return Category[] Returns an array of Category objects
+     */
+
+    public function findByLeftAndRight($value1, $value2, $value3)
+    {
+        return $this->createQueryBuilder('c')
+            ->distinct()
+            ->andWhere('c.lft >= :val1')
+            ->andWhere('c.rgt <= :val2')
+            ->andWhere('c.lvl = :val3')
+            ->orderBy('c.id', 'ASC')
+            ->setParameter('val1', $value1)
+            ->setParameter('val2', $value2)
+            ->setParameter('val3', $value3)
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
     // /**
     //  * @return Category[] Returns an array of Category objects
     //  */
