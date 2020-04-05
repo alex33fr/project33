@@ -54,9 +54,7 @@
         <div class="col-6">
         </div>
         <div class="col-3 text-center">
-            <button class="btn btn-outline-danger font-weight-bold shadow-sm" type="button">
-                <img src="{{ asset('images/icon/telephone.png') }}" class="mr-1" width="32" height="32" alt="Phone icon">
-                Заказать звонок</button>
+            <a href="{{ path('contact') }}" class="btn btn-outline-danger font-weight-bold shadow-sm" role="button" aria-pressed="true"><img src="{{ asset('images/icon/telephone.png') }}" class="mr-1" width="32" height="32" alt="Phone icon">Заказать звонок</a>
         </div>
         <div class="col-3 text-center">
             <button class="btn btn-outline-danger font-weight-bold shadow-sm" type="button">
@@ -104,6 +102,11 @@
 </nav>
 <body>
 {% block body %}
+    {% for message in app.flashes('success') %}
+        <div class="alert alert-success">
+            {{ message }}
+        </div>
+    {% endfor %}
 {% endblock %}
 </body>
 
@@ -114,16 +117,13 @@
 
 
 {% block footer %}
-    <footer class="page-footer font-small mdb-color lighten-3 pt-4">
-        <div class="container text-center text-md-left">
+    <footer class="page-footer font-small mdb-color lighten-3 pt-4 bg-secondary">
+        <div class="container text-center text-md-left text-white">
             <div class="row">
                 <div class="col-md-4 col-lg-3 mr-auto my-md-4 my-0 mt-4 mb-1">
 
                     <h5 class="font-weight-bold text-uppercase mb-4">О компании</h5>
-                    <p>Here you can use rows and columns to organize your footer content.</p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit amet numquam iure provident voluptate
-                        esse
-                        quasi, veritatis totam voluptas nostrum.</p>
+                    <p>Команда Окна Центра Продаж работает на протяжение более 5 лет, состоит из менеджеров-специалистов а также замерщиков и монтажеров. Мы старались собрать наилучших специалистов, чтобы быть лучше!</p>
 
                 </div>
                 <!-- Grid column -->
@@ -139,7 +139,7 @@
                     <ul class="list-unstyled">
                         <li>
                             <p>
-                                <a href="{{ path('app_login') }}">Войти</a>
+                                <a href="{{ path('app_login') }}" class="text-dark">Войти</a>
                             </p>
                         </li>
                     </ul>
@@ -153,7 +153,7 @@
                 <div class="col-md-4 col-lg-3 mx-auto my-md-4 my-0 mt-4 mb-1">
 
                     <!-- Contact details -->
-                    <h5 class="font-weight-bold text-uppercase mb-4">Где нас найти?</h5>
+                    <h5 class="font-weight-bold text-uppercase mb-4 text-center">Где нас найти?</h5>
 
                     <ul class="list-unstyled">
                         <li>
@@ -208,8 +208,8 @@
         <!-- Footer Links -->
 
         <!-- Copyright -->
-        <div class="footer-copyright text-center py-3 mb-3">© {{ "now"|date("Y") }} Все права принадлежат:
-            <a href="https://oknacentrprodaj.ru/">oknacentrprodaj.ru</a>
+        <div class="footer-copyright text-center py-3 text-white pb-5">© {{ "now"|date("Y") }} Все права принадлежат:
+            <a href="https://oknacentrprodaj.ru/" class="text-dark">oknacentrprodaj.ru</a>
         </div>
         <!-- Copyright -->
 

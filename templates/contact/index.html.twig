@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Заказать звонок{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <section class="min-vh-100">
+                <div class="container">
+                    <h2 class="text-center mt-3">Заказать звонок</h2>
+                    <div class="row">
+                        <div class="col-sm-8 mx-auto form pt-4">
+                            {{ form_start(contactForm) }}
+                            {{ form_row(contactForm.name) }}
+                            {{ form_row(contactForm.phoneNumber) }}
+                            {{ form_row(contactForm.email) }}
+                            {{ form_row(contactForm.message) }}
+                            {{ form_end(contactForm) }}
+                            {% for message in app.flashes('success') %}
+                                <div class="alert alert-success">
+                                    {{ message }}
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+        </section>
+    </div>
+{% endblock %}
