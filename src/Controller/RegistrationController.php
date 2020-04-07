@@ -13,7 +13,7 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 class RegistrationController extends AbstractController
 {
     /**
-     * @Route("/register", name="app_register")
+     * @Route("/back/register", name="app_register")
      */
     public function register(Request $request, UserPasswordEncoderInterface $passwordEncoder): Response
     {
@@ -29,14 +29,14 @@ class RegistrationController extends AbstractController
                     $form->get('plainPassword')->getData()
                 )
             );
-
+            $user->setRoles(array("ROLE_ADMIN"));
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($user);
             $entityManager->flush();
 
             // do anything else you need here, like send an email
 
-            return $this->redirectToRoute('');
+            return $this->redirectToRoute('back');
         }
 
         return $this->render('registration/register.html.twig', [

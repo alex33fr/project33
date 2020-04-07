@@ -77,25 +77,25 @@
     <div>
         <ul class="nav font-weight-bold text-uppercase">
             <li class="nav-item">
-                <a class="nav-link text-dark" href="{{ path('home', {'title': 'балконы'}) }}">БАЛКОНЫ</a>
+                <a class="nav-link text-dark" href="{{ path('allProductsShow', {'title': 'окна'}) }}">ОКНА</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-dark" href="{{ path('home', {'title': 'двери'}) }}">ДВЕРИ</a>
+                <a class="nav-link text-dark" href="{{ path('allProductsShow', {'title': 'двери'}) }}">ДВЕРИ</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-dark" href="{{ path('home', {'title': 'потолки'}) }}">ПОТОЛКИ</a>
+                <a class="nav-link text-dark" href="{{ path('allProductsShow', {'title': 'потолки'}) }}">ПОТОЛКИ</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-dark" href="{{ path('home', {'title': 'рольставни'}) }}">РОЛЬСТАВНИ</a>
+                <a class="nav-link text-dark" href="{{ path('allProductsShow', {'title': 'жалюзи'}) }}">ЖАЛЮЗИ</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-dark" href="{{ path('home', {'title': 'жалюзи'}) }}">ЖАЛЮЗИ</a>
+                <a class="nav-link text-dark" href="{{ path('allProductsShow', {'title': 'рольставни'}) }}">РОЛЬСТАВНИ</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-dark" href="{{ path('home', {'title': 'ворота'}) }}">ВОРОТА</a>
+                <a class="nav-link text-dark" href="{{ path('allProductsShow', {'title': 'ворота'}) }}">ВОРОТА</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-dark active" href="{{ path('home', {'title': 'стеллажи'}) }}">СТЕЛЛАЖИ</a>
+                <a class="nav-link text-dark active" href="{{ path('allProductsShow', {'title': 'стеллажи'}) }}">СТЕЛЛАЖИ</a>
             </li>
         </ul>
     </div>
@@ -117,13 +117,14 @@
 
 
 {% block footer %}
-    <footer class="page-footer font-small mdb-color lighten-3 pt-4 bg-secondary">
+    <footer class="page-footer font-small mdb-color lighten-3 pt-4 bg-dark">
         <div class="container text-center text-md-left text-white">
             <div class="row">
                 <div class="col-md-4 col-lg-3 mr-auto my-md-4 my-0 mt-4 mb-1">
 
                     <h5 class="font-weight-bold text-uppercase mb-4">О компании</h5>
-                    <p>Команда Окна Центра Продаж работает на протяжение более 5 лет, состоит из менеджеров-специалистов а также замерщиков и монтажеров. Мы старались собрать наилучших специалистов, чтобы быть лучше!</p>
+                    <p>Команда Окна Центра Продаж работает уже более 5 лет, состоит из менеджеров-специалистов, а также замерщиков и монтажеров.</p>
+                    <p>Мы старались собрать наилучших специалистов, чтобы быть лучше!</p>
 
                 </div>
                 <!-- Grid column -->
@@ -139,7 +140,7 @@
                     <ul class="list-unstyled">
                         <li>
                             <p>
-                                <a href="{{ path('app_login') }}" class="text-dark">Войти</a>
+                                <a href="{{ path('app_login') }}" class="text-white">Войти</a>
                             </p>
                         </li>
                     </ul>
@@ -209,7 +210,7 @@
 
         <!-- Copyright -->
         <div class="footer-copyright text-center py-3 text-white pb-5">© {{ "now"|date("Y") }} Все права принадлежат:
-            <a href="https://oknacentrprodaj.ru/" class="text-dark">oknacentrprodaj.ru</a>
+            <a href="https://oknacentrprodaj.ru/" class="text-white">oknacentrprodaj.ru</a>
         </div>
         <!-- Copyright -->
 

@@ -20,6 +20,8 @@ class ProductRepository extends ServiceEntityRepository
     }
 
     /**
+     * @param $value1
+     * @param $value2
      * @return Product[] Returns an array of Product objects
      */
 

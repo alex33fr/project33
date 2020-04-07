@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/category")
+ * @Route("/back/category")
  */
 class CategoryController extends AbstractController
 {
@@ -27,6 +27,8 @@ class CategoryController extends AbstractController
 
     /**
      * @Route("/new", name="category_new", methods={"GET","POST"})
+     * @param Request $request
+     * @return Response
      */
     public function new(Request $request): Response
     {
@@ -60,6 +62,9 @@ class CategoryController extends AbstractController
 
     /**
      * @Route("/{id}/edit", name="category_edit", methods={"GET","POST"})
+     * @param Request $request
+     * @param Category $category
+     * @return Response
      */
     public function edit(Request $request, Category $category): Response
     {
@@ -80,6 +85,9 @@ class CategoryController extends AbstractController
 
     /**
      * @Route("/{id}", name="category_delete", methods={"DELETE"})
+     * @param Request $request
+     * @param Category $category
+     * @return Response
      */
     public function delete(Request $request, Category $category): Response
     {

@@ -80,6 +80,11 @@ class Product
      */
     private $category;
 
+    /**
+     * @ORM\Column(type="float", nullable=true)
+     */
+    private $price;
+
     function __construct()
     {
         $this->createdAt = new \DateTime();
@@ -225,6 +230,18 @@ class Product
     public function setCategory(?Category $category): self
     {
         $this->category = $category;
+
+        return $this;
+    }
+
+    public function getPrice(): ?float
+    {
+        return $this->price;
+    }
+
+    public function setPrice(?float $price): self
+    {
+        $this->price = $price;
 
         return $this;
     }

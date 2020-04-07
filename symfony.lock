@@ -178,18 +178,6 @@
             "./config/packages/sensio_framework_extra.yaml"
         ]
     },
-    "stof/doctrine-extensions-bundle": {
-        "version": "1.2",
-        "recipe": {
-            "repo": "github.com/symfony/recipes-contrib",
-            "branch": "master",
-            "version": "1.2",
-            "ref": "6c1ceb662f8997085f739cd089bfbef67f245983"
-        },
-        "files": [
-            "./config/packages/stof_doctrine_extensions.yaml"
-        ]
-    },
     "swiftmailer/swiftmailer": {
         "version": "v6.2.3"
     },
@@ -606,6 +594,9 @@
         "version": "v5.0.7"
     },
     "twig/extra-bundle": {
+        "version": "v3.0.3"
+    },
+    "twig/string-extra": {
         "version": "v3.0.3"
     },
     "twig/twig": {
