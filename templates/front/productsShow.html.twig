@@ -1,72 +1,74 @@
 {% extends 'base.html.twig' %}
-{% block title %}Product index{% endblock %}
+{% block title %}Товары{% endblock %}
 {% block body %}
-<div class="container">
-    <div class="row">
-        <div class="col-lg-3">
-            <h3 class="my-4 mt-5 text-center">Категории</h3>
-            <div class="list-group">
-                {% for category in categories %}
-{#                <a href="{{ path('categoriesShow', {'title': category.title }) }}" class="list-group-item text-decoration-none text-dark">{{ category.title }}</a>#}
-                     // TODO create tempalte category
-                    {{ category.title }}
-                {% else %}
-                    <tr>
-                        <td colspan="5">Нет катигорий</td>
-                    </tr>
-                {% endfor %}
-            </div>
-
-        </div>
-        <!-- /.col-lg-3 -->
-
-        <div class="col-lg-9">
-            <div class="shadow-lg">
-            <div id="carouselExampleIndicators" class="carousel slide my-4" data-ride="carousel">
-                <div class="carousel-inner" role="listbox">
-                    {% for product in products[1:] %}
-                        <div class="carousel-item {%if loop.index == 1%} active {%endif%}">
-                            <img src="{{ vich_uploader_asset(product, 'imageFile') | imagine_filter('prod')}}" alt="{{ product.title }}">
-                        </div>
-                    {% endfor %}
-                </div>
-
-                <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Previous</span>
-                </a>
-                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Next</span>
-                </a>
+    <div class="container mt-4">
+{#        {% for titles in categories %}#}
+{#            <h2 class="text-center text-dark h2 my-4 font-weight-bold">{{ titles.title }}</h2>#}
+{#        {% endfor %}#}
+        <div class="row">
+            <div class="col-lg-3">
+                <h3 class="my-4 mt-5 text-center">{% if categories is not empty %}Категории{% endif %}</h3>
+                <div class="list-group">
+                    <nav class="nav flex-column">
+                        {% for category in categories %}
+                            <a class="nav-link active text-dark text-center shadow-sm" href="{{ path('oknaShow', {'title' : category.title }) }}">{{ category.title }}</a>
+                        {% else%}
+                            {% if categories is not empty %}
+                                <tr>
+                                    <td colspan="5">Нет категорий</td>
+                                </tr>
+                            {% endif %}
+                        {% endfor %}
+                    </nav>
                 </div>
             </div>
-            <div class="row">
-                {% for product in products %}
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="card h-100 shadow-sm">
-                        <a href="{{ path('product_show', {'id': product.id}) }}"><img class="card-img-top" src="{{ vich_uploader_asset(product, 'imageFile')}}" alt="{{ product.title }}"></a>
-                        <div class="card-body">
-                            <h4 class="card-title text-center text-dark">
-                                <a href="{{ path('product_show', {'id': product.id}) }}" class="text-dark underlineHover text-decoration-none">{{ product.title }}</a>
-                            </h4>
-                            <h5>{{ product.price }} руб.</h5>
-                            <p class="card-text">{{ product.descOne }}</p>
+            <!-- /.col-lg-3 -->
+            <div class="col-lg-9">
+                <div class="shadow-lg">
+                    <div id="carouselExampleIndicators" class="carousel slide my-4" data-ride="carousel">
+                        <div class="carousel-inner" role="listbox">
+                            {% for product in products[1:] %}
+                                <div class="carousel-item {%if loop.index == 1%} active {%endif%}">
+                                    <img src="{{ vich_uploader_asset(product, 'imageFile') | imagine_filter('productBanner_filter')}}" alt="{{ product.title }}">
+                                </div>
+                            {% endfor %}
                         </div>
-                        <div class="text-center mb-2">
-                            <a class="btn btn-outline-danger btn-group-sm" href="{{ path('product_show', {'id': product.id}) }}">Узнать больше</a>
-                        </div>
+                        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
                     </div>
                 </div>
-                {% else %}
+                <div class="row">
+                    {% for product in products %}
+                        <div class="col-lg-4 col-md-6 mb-4">
+                            <div class="card h-100 shadow-sm">
+                                <a href="{{ path('product_show', {'id': product.id}) }}"><img class="card-img-top" src="{{ vich_uploader_asset(product, 'imageFile') | imagine_filter('product_filter')}}" alt="{{ product.title }}"></a>
+                                <div class="card-body">
+                                    <h4 class="card-title text-center text-dark">
+                                        <a href="{{ path('product_show', {'id': product.id}) }}" class="text-dark underlineHover text-decoration-none">{{ product.title }}</a>
+                                    </h4>
+                                    <h5>{{ product.price }} руб.</h5>
+                                    <p class="card-text text-dark">{{ product.descOne | u.truncate(90, ' ...') }}</p>
+                                </div>
+                                <div class="text-center mb-2">
+                                    <a class="btn btn-outline-danger btn-group-sm" href="{{ path('product_show', {'id': product.id}) }}">Узнать больше</a>
+                                </div>
+                            </div>
+                        </div>
+                    {% else %}
                         <p class="text-dark text-center">К сожалению, продукты не были найдены</p>
-                {% endfor %}
+                    {% endfor %}
+                </div>
+                <!-- /.row -->
             </div>
-            <!-- /.row -->
+            <!-- /.col-lg-9 -->
         </div>
-        <!-- /.col-lg-9 -->
+        <!-- /.row -->
     </div>
-    <!-- /.row -->
-</div>
-<!-- /.container -->
+    <!-- /.container -->
 {% endblock %}

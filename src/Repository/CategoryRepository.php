@@ -20,9 +20,6 @@ class CategoryRepository extends ServiceEntityRepository
     }
 
     /**
-     * @param $value1
-     * @param $value2
-     * @param $value3
      * @return Category[] Returns an array of Category objects
      */
 
@@ -42,40 +39,21 @@ class CategoryRepository extends ServiceEntityRepository
             ;
     }
 
+     /**
+      * @return Category[] Returns an array of Category objects
+      */
 
-    /**
-     * @param $value1
-     * @return Category[] Returns an array of Category objects
-     */
-
-    public function findByLvl($value1)
+    public function findByTitle($value)
     {
         return $this->createQueryBuilder('c')
-            ->distinct()
-            ->andWhere('c.lvl = :val1')
-            ->orderBy('c.id', 'ASC')
-            ->setParameter('val1', $value1)
-            ->getQuery()
-            ->getResult()
-            ;
-    }
-
-    // /**
-    //  * @return Category[] Returns an array of Category objects
-    //  */
-    /*
-    public function findByExampleField($value)
-    {
-        return $this->createQueryBuilder('c')
-            ->andWhere('c.exampleField = :val')
+            ->select('c.title')
+            ->andWhere('c.lvl = :val')
             ->setParameter('val', $value)
-            ->orderBy('c.id', 'ASC')
-            ->setMaxResults(10)
             ->getQuery()
             ->getResult()
         ;
     }
-    */
+
 
     /*
     public function findOneBySomeField($value): ?Category

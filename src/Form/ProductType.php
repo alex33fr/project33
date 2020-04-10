@@ -2,7 +2,9 @@
 
 namespace App\Form;
 
+use App\Entity\Category;
 use App\Entity\Product;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\MoneyType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
@@ -16,24 +18,54 @@ class ProductType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('title', TextType::class, ['label' => 'Название'])
+            ->add('title', TextType::class, [
+                'label' => 'Название продукта',
+                'required' => true
+            ])
             ->add('imageFile', VichImageType::class, [
                 'allow_delete' => true,
                 'download_link' => true,
                 'download_uri' => true,
                 'download_label' => 'Скачать',
                 'label' => 'Картинка',
+                'required' => true
             ])
-            ->add('model', TextType::class, ['label' => 'Модель'])
-            ->add('color', TextType::class, ['label' => 'Цвет'])
-            ->add('descOne', TextareaType::class, ['label' => 'Краткое описание'])
-            ->add('descTwo', TextareaType::class, ['label' => 'Полное описание'])
-            ->add('price', MoneyType::class, ['label' => 'Цена',
-                'currency' => 'RUB'
+            ->add('model', TextType::class, [
+                'label' => 'Модель',
+                'required' => false
             ])
-            ->add('category')
+            ->add('color', TextType::class, [
+                'label' => 'Цвет',
+                'required' => false
+            ])
+            ->add('descOne', TextareaType::class, [
+                'label' => 'Краткое описание',
+                'required' => false
+            ])
+            ->add('descTwo', TextareaType::class, [
+                'label' => 'Полное описание',
+                'required' => false
+            ])
+            ->add('price', MoneyType::class, [
+                'label' => 'Цена',
+                'currency' => 'RUB',
+                'required' => false
+            ])
+            ->add('category', EntityType::class, [
+                'class' => Category::class,
+                'label' => 'Категория',
+                'placeholder' => 'Выберите категорию',
+                'required' => true,
+                'choice_label' => function(Category $category){
+                    return $category->getTitle();
+                },
+                'group_by' => function(Category $category) {
+                    return $category->getParent();
+                }
+            ])
         ;
     }
+
 
     public function configureOptions(OptionsResolver $resolver)
     {

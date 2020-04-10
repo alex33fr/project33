@@ -1,35 +1,31 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Category{% endblock %}
+{% block title %}Категория{% endblock %}
 
 {% block body %}
-    <h1>Category</h1>
-
+    <h1 class="text-center my-4 text-dark">Категория: {{ category.title }}</h1>
+<div class="container">
     <table class="table">
         <tbody>
             <tr>
-                <th>Id</th>
-                <td>{{ category.id }}</td>
-            </tr>
-            <tr>
-                <th>Title</th>
+                <th>Название</th>
                 <td>{{ category.title }}</td>
             </tr>
             <tr>
-                <th>ImageName</th>
-                <td>{{ category.imageName }}</td>
+                <th>Картинка</th>
+                <td><img src="{{ vich_uploader_asset(category, 'imageFile') | imagine_filter('table') }}" alt="{{ category.title }}"></td>
             </tr>
             <tr>
-                <th>ImageSize</th>
-                <td>{{ category.imageSize }}</td>
+                <th>Описание</th>
+                <td>{{ category.description }}</td>
             </tr>
             <tr>
-                <th>UpdatedAt</th>
-                <td>{{ category.updatedAt ? category.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                <th>Именинно</th>
+                <td>{{ category.updatedAt ? category.updatedAt|date('d-m-Y H:i') : '' }}</td>
             </tr>
             <tr>
-                <th>CreatedAt</th>
-                <td>{{ category.createdAt ? category.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <th>Созданно</th>
+                <td>{{ category.createdAt ? category.createdAt|date('d-m-Y H:i') : '' }}</td>
             </tr>
             <tr>
                 <th>Lft</th>
@@ -45,10 +41,13 @@
             </tr>
         </tbody>
     </table>
+    <a href="{{ path('category_index') }}" class="btn btn-secondary">Вернуться к списку</a>
 
-    <a href="{{ path('category_index') }}">back to list</a>
-
-    <a href="{{ path('category_edit', {'id': category.id}) }}">edit</a>
+    <a href="{{ path('category_edit', {'id': category.id}) }}" class="btn btn-warning">Изменить</a>
 
     {{ include('category/_delete_form.html.twig') }}
+</div>
 {% endblock %}
+
+
+

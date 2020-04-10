@@ -2,6 +2,9 @@
 
 namespace App\Entity;
 
+use DateTime;
+use Entity\Repository\CategoryRepository;
+use http\Env\Response;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -61,6 +64,7 @@ class Category
 
     /**
      * @ORM\Column(type="datetime", nullable=true)
+     * @var DateTime
      */
     private $updatedAt;
 
@@ -112,10 +116,14 @@ class Category
      */
     private $products;
 
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $description;
+
     public function __construct()
     {
-        $this->createdAt = new \DateTime();
-        $this->updatedAt = new \DateTime();
+        $this->createdAt = new DateTime();
         $this->products = new ArrayCollection();
     }
 
@@ -193,6 +201,7 @@ class Category
     {
         return $this->updatedAt;
     }
+
 
     public function setUpdatedAt(?\DateTimeInterface $updatedAt): self
     {
@@ -308,6 +317,18 @@ class Category
                 $product->setCategory(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    public function setDescription(?string $description): self
+    {
+        $this->description = $description;
 
         return $this;
     }

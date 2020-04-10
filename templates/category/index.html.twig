@@ -1,49 +1,47 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Category index{% endblock %}
+{% block title %}Список категорий{% endblock %}
 
 {% block body %}
-    <h1>Category index</h1>
 
-    <table class="table">
+<div class="container">
+    <h1 class="text-center my-4 text-dark">Список категорий</h1>
+    <table class="table-responsive-sm text-center table-hover">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Title</th>
-                <th>ImageName</th>
-                <th>ImageSize</th>
-                <th>UpdatedAt</th>
-                <th>CreatedAt</th>
+                <th>Название</th>
+                <th>Картинка</th>
+                <th>Описание</th>
+                <th>Изменинно</th>
+                <th>Дата создания</th>
                 <th>Lft</th>
                 <th>Rgt</th>
                 <th>Lvl</th>
-                <th>actions</th>
+                <th>Действия</th>
             </tr>
         </thead>
         <tbody>
         {% for category in categories %}
             <tr>
-                <td>{{ category.id }}</td>
                 <td>{{ category.title }}</td>
-                <td>{{ category.imageName }}</td>
-                <td>{{ category.imageSize }}</td>
-                <td>{{ category.updatedAt ? category.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ category.createdAt ? category.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td><img src="{{ vich_uploader_asset(category, 'imageFile') | imagine_filter('table_filter') }}" alt="{{ category.title }}"></td>
+                <td>{{ category.description | u.truncate(50, '...') }}</td>
+                <td>{{ category.updatedAt ? category.updatedAt|date('d-m-Y H:i') : '' }}</td>
+                <td>{{ category.createdAt ? category.createdAt|date('d-m-Y H:i') : '' }}</td>
                 <td>{{ category.lft }}</td>
                 <td>{{ category.rgt }}</td>
                 <td>{{ category.lvl }}</td>
                 <td>
-                    <a href="{{ path('category_show', {'id': category.id}) }}">show</a>
-                    <a href="{{ path('category_edit', {'id': category.id}) }}">edit</a>
+                    <a href="{{ path('category_show', {'id': category.id}) }}" class="btn-sm btn-secondary text-decoration-none">Показать</a>
+                    <a href="{{ path('category_edit', {'id': category.id}) }}" class="btn-sm btn-warning text-decoration-none">Изменить</a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="10">no records found</td>
+                <td colspan="10">Категорий не найдено в базе данных</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
-
-    <a href="{{ path('category_new') }}">Create new</a>
+</div>
 {% endblock %}
