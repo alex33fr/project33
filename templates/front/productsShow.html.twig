@@ -11,7 +11,7 @@
                 <div class="list-group">
                     <nav class="nav flex-column">
                         {% for category in categories %}
-                            <a class="nav-link active text-dark text-center shadow-sm" href="{{ path('oknaShow', {'title' : category.title }) }}">{{ category.title }}</a>
+                            <a class="nav-link active text-dark text-center shadow-sm" href="{{ path('productsShow', {'title' : category.title }) }}">{{ category.title }}</a>
                         {% else%}
                             {% if categories is not empty %}
                                 <tr>

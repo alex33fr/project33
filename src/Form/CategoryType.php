@@ -28,6 +28,10 @@ class CategoryType extends AbstractType
                 'label' => 'Картинка',
                 'required' => true
             ])
+            ->add('altImage', TextType::class,[
+                'label' => 'Alt SEO для картинки',
+                'required' => false
+            ])
             ->add('description', TextareaType::class, [
                 'label' => 'Описание',
                 'required' => false

@@ -121,6 +121,11 @@ class Category
      */
     private $description;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $altImage;
+
     public function __construct()
     {
         $this->createdAt = new DateTime();
@@ -329,6 +334,18 @@ class Category
     public function setDescription(?string $description): self
     {
         $this->description = $description;
+
+        return $this;
+    }
+
+    public function getAltImage(): ?string
+    {
+        return $this->altImage;
+    }
+
+    public function setAltImage(?string $altImage): self
+    {
+        $this->altImage = $altImage;
 
         return $this;
     }

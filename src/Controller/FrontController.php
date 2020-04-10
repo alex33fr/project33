@@ -23,12 +23,12 @@ class FrontController extends AbstractController
     }
 
     /**
-     * @Route("/products/{title}", name="oknaShow")
+     * @Route("/products/{title}", name="productsShow")
      * @param CategoryRepository $categoryRepository
      * @param Category $category
      * @return Response
      */
-    public function oknaShow(CategoryRepository $categoryRepository, Category $category): Response
+    public function productsShow(CategoryRepository $categoryRepository, Category $category): Response
     {
 
         $val1 = $category->getLft();

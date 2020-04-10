@@ -30,6 +30,10 @@ class ProductType extends AbstractType
                 'label' => 'Картинка',
                 'required' => true
             ])
+            ->add('altImage', TextType::class,[
+                'label' => 'Alt SEO для картинки',
+                'required' => false
+            ])
             ->add('model', TextType::class, [
                 'label' => 'Модель',
                 'required' => false

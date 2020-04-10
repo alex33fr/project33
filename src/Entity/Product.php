@@ -85,6 +85,11 @@ class Product
      */
     private $price;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $altImage;
+
     function __construct()
     {
         $this->createdAt = new \DateTime();
@@ -242,6 +247,18 @@ class Product
     public function setPrice(?float $price): self
     {
         $this->price = $price;
+
+        return $this;
+    }
+
+    public function getAltImage(): ?string
+    {
+        return $this->altImage;
+    }
+
+    public function setAltImage(?string $altImage): self
+    {
+        $this->altImage = $altImage;
 
         return $this;
     }
