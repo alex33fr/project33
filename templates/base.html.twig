@@ -10,7 +10,7 @@
     <meta name="googlebot" content="all" /> {# // TODO amelieurer#}
     <meta property="og:title" content="Окна двери в Москве, Сергиев Посад и МО, гарантия лучшей цены!">
     <meta property="og:type" content="website">
-    <meta property="og:image" content="">{# // TODO add here logotype of your website inside "content"#}
+    <meta property="og:image" content="{{ asset('images/logotype.png') }}">
     <meta property="og:image:secure_url" content="https://secure.example.com/ogp.jpg" />
     <meta property="og:image:type" content="image/png" />
     <meta property="og:image:width" content="400" />
@@ -82,33 +82,24 @@
     </div>
 </div>
 
-
 <!-- BRAND -->
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-lg-12">
-            <nav class="navbar bg-danger">
-                <div class="col-lg-1">
-                </div>
-                <div class="col-lg-7">
-                    <a class="navbar-brand ml-5" href="{{ path('home') }}">
-                        <img src="{{ asset('images/logotype.png') }}" width="300" height="101"
-                             alt="Логотип Окна Центр Продаж">
-                    </a>
-                </div>
-                <div class="col-lg-4">
-                    <ul class="nav font-weight-bold">
-                        <li class="nav-item">
-                            <h3 class="text-white"><i class="fas fa-home mr-3"></i>2 этаж, ул.Пограничная д.32</h3>
-                            <h3 class="text-white"><i class="fas fa-map-marked mr-3"></i>Сергиев Посад</h3>
-                            <h3 class="text-white font-weight-bolder"><i class="fas fa-phone mr-3"></i>8 967 091 - 1000</h3>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
-        </div>
-    </div>
-</div>
+<nav class="navbar bg-danger d-flex justify-content-around">
+    <a class="navbar-brand" href="{{ path('home') }}">
+        <img src="{{ asset('images/logotype.png') }}" width="300" height="101" alt="Логотип Окна Центр Продаж">
+    </a>
+    <ul class="nav font-weight-bolder">
+        <li class="nav-item">
+            <h3 class="text-white font-weight-bolder"><i class="fas fa-phone-alt mr-3"></i>8 967 091 - 1000</h3>
+            <h3 class="text-white font-weight-bolder"><i class="fas fa-phone-alt mr-3"></i>8 968 741 - 6868</h3>
+        </li>
+    </ul>
+    <ul class="nav">
+        <li class="nav-item">
+            <h4 class="text-white"><i class="fas fa-home mr-3"></i>2 этаж, ул.Пограничная д.32</h4>
+            <h4 class="text-white"><i class="fas fa-map-marked mr-3"></i>г. Сергиев Посад</h4>
+        </li>
+    </ul>
+</nav>
 
 <nav class="navbar pb-2 pt-2 sticky-top navbar-expand-lg bg-white justify-content-center shadow-sm">
     <div>
@@ -230,6 +221,10 @@
                             <p>
                                 <i class="fas fa-phone mr-1"></i>8 967 091 - 1000</p>
                         </li>
+                        <li>
+                            <p>
+                                <i class="fas fa-phone mr-1"></i>8 968 741 - 6868</p>
+                        </li>
                     </ul>
 
                 </div>
@@ -240,26 +235,26 @@
                 <!-- Grid column -->
                 <div class="col-md-2 col-lg-2 text-center mx-auto my-4">
 
-                    <!-- Social buttons -->
-                    <h5 class="font-weight-bold text-uppercase mb-4">Подпишись!</h5>
 
-                    <!-- Facebook -->
+                    <h5 class="font-weight-bold text-uppercase mb-4">Подпишись!</h5>
+                    <!-- Social buttons
+
                     <a type="button" class="btn-floating btn-fb">
                         <i class="fab fa-facebook-f"></i>
                     </a>
-                    <!-- Twitter -->
+
                     <a type="button" class="btn-floating btn-tw">
                         <i class="fab fa-twitter"></i>
                     </a>
-                    <!-- Google +-->
+
                     <a type="button" class="btn-floating btn-gplus">
                         <i class="fab fa-google-plus-g"></i>
                     </a>
-                    <!-- Dribbble -->
+
                     <a type="button" class="btn-floating btn-dribbble">
                         <i class="fab fa-dribbble"></i>
                     </a>
-
+                    -->
                 </div>
                 <!-- Grid column -->
 
