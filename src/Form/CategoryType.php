@@ -40,7 +40,6 @@ class CategoryType extends AbstractType
                 'class' => Category::class,
                 'label' => 'Категория',
                 'placeholder' => 'Выберите категорию',
-                'required' => true,
                 'choice_label' => function(Category $category){
                     return $category->getTitle();
                 },

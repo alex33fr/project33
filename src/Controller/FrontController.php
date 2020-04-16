@@ -3,7 +3,9 @@
 namespace App\Controller;
 
 use App\Entity\Category;
+use App\Entity\Product;
 use App\Repository\CategoryRepository;
+use App\Repository\ProductRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -23,12 +25,13 @@ class FrontController extends AbstractController
     }
 
     /**
-     * @Route("/products/{title}", name="productsShow")
+     * @Route("/products/{title}", name="productsShow", methods={"GET"})
      * @param CategoryRepository $categoryRepository
      * @param Category $category
+     * @param ProductRepository $productRepository
      * @return Response
      */
-    public function productsShow(CategoryRepository $categoryRepository, Category $category): Response
+    public function productsShow(CategoryRepository $categoryRepository, Category $category, ProductRepository $productRepository): Response
     {
 
         $val1 = $category->getLft();
@@ -37,10 +40,24 @@ class FrontController extends AbstractController
 
         $categories = $categoryRepository->findByLeftAndRight($val1,$val2,++$val3);
         $products = $category->getProducts();
+        $categoriesShow = $categoryRepository->findByLeftAndRight($val1,$val2, 1);
 
-        return $this->render('front/productsShow.html.twig', [
+        return $this->render('front/productPage.html.twig', [
+            'categoriesShow' => $categoriesShow,
             'categories' => $categories,
             'products' => $products,
+        ]);
+    }
+
+    /**
+     * @Route("/products/show/{id}", name="productShow", methods={"GET"})
+     * @param Product $product
+     * @return Response
+     */
+    public function show(Product $product): Response
+    {
+        return $this->render('front/productShow.html.twig', [
+            'product' => $product,
         ]);
     }
 }

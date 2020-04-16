@@ -34,5 +34,5 @@ security:
         - { path: '^/(%app.locales%)/back', roles: ROLE_ADMIN }
         - { path: '^/(%app.locales%)/login', roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: '^/(%app.locales%)/register', roles: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: '^/(%app.locales%)/', roles: ROLE_ADMIN }
-        - { path: '^/', roles: ROLE_ADMIN }
+        - { path: '^/(%app.locales%)/', roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: '^/', roles: IS_AUTHENTICATED_ANONYMOUSLY }

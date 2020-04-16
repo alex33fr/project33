@@ -52,7 +52,6 @@ class Category
 
     /**
      * @Vich\UploadableField(mapping="category", fileNameProperty="imageName", size="imageSize")
-     *
      * @var File|null
      */
     private $imageFile;
@@ -138,7 +137,7 @@ class Category
      */
     public function __toString()
     {
-        return $this->getTitle();
+        return $this->getTitle() . ' уровень ' . $this->getLvl();
     }
 
     public function getId(): ?int

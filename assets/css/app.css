@@ -265,3 +265,6 @@ h1{
 .zindex{
     z-index: 9999999;
 }
+.frontPage {
+    border: 2px solid #da251c;
+}

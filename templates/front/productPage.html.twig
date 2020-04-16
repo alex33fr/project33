@@ -2,9 +2,6 @@
 {% block title %}Товары{% endblock %}
 {% block body %}
     <div class="container mt-4">
-{#        {% for titles in categories %}#}
-{#            <h2 class="text-center text-dark h2 my-4 font-weight-bold">{{ titles.title }}</h2>#}
-{#        {% endfor %}#}
         <div class="row">
             <div class="col-lg-3">
                 <h3 class="my-4 mt-5 text-center">{% if categories is not empty %}Категории{% endif %}</h3>
@@ -22,7 +19,23 @@
                     </nav>
                 </div>
             </div>
+
+            {% if categoriesShow is not empty %}
+                {% for categoriesMain in categoriesShow %}
+                        <div class="col-lg-9 mb-4">
+                            <div class="card">
+                                <img src="{{ vich_uploader_asset(categoriesMain, 'imageFile') | imagine_filter('productBanner_filter')}}" class="card-img-top" alt="{{ categoriesMain.altImage }}">
+                                <div class="card-body">
+                                    <h2 class="card-title ">{{ categoriesMain.title }}</h2>
+                                    <p class="card-text">{{ categoriesMain.description }}</p>
+                                </div>
+                            </div>
+                        </div>
+                {% endfor %}
+            {% endif %}
+
             <!-- /.col-lg-3 -->
+            {% if products is not empty %}
             <div class="col-lg-9">
                 <div class="shadow-lg">
                     <div id="carouselExampleIndicators" class="carousel slide my-4" data-ride="carousel">
@@ -47,16 +60,16 @@
                     {% for product in products %}
                         <div class="col-lg-4 col-md-6 mb-4">
                             <div class="card h-100 shadow-sm">
-                                <a href="{{ path('product_show', {'id': product.id}) }}"><img class="card-img-top" src="{{ vich_uploader_asset(product, 'imageFile') | imagine_filter('product_filter')}}" alt="{{ product.title }}"></a>
+                                <a href="{{ path('productShow', {'id': product.id}) }}"><img class="card-img-top" src="{{ vich_uploader_asset(product, 'imageFile') | imagine_filter('product_filter')}}" alt="{{ product.title }}"></a>
                                 <div class="card-body">
                                     <h4 class="card-title text-center text-dark">
-                                        <a href="{{ path('product_show', {'id': product.id}) }}" class="text-dark underlineHover text-decoration-none">{{ product.title }}</a>
+                                        <a href="{{ path('productShow', {'id': product.id}) }}" class="text-dark underlineHover text-decoration-none">{{ product.title }}</a>
                                     </h4>
                                     <h5>{{ product.price }} руб.</h5>
-                                    <p class="card-text text-dark">{{ product.descOne | u.truncate(90, ' ...') }}</p>
+                                    <p class="card-text text-dark">{{ product.descOne | u.truncate(90, ' ...') }} </p>
                                 </div>
                                 <div class="text-center mb-2">
-                                    <a class="btn btn-outline-danger btn-group-sm" href="{{ path('product_show', {'id': product.id}) }}">Узнать больше</a>
+                                    <a class="btn btn-outline-danger btn-group-sm" href="{{ path('productShow', {'id': product.id}) }}">Узнать больше</a>
                                 </div>
                             </div>
                         </div>
@@ -65,7 +78,12 @@
                     {% endfor %}
                 </div>
                 <!-- /.row -->
+
+
+
+
             </div>
+            {% endif %}
             <!-- /.col-lg-9 -->
         </div>
         <!-- /.row -->
