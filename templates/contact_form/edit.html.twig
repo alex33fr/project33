@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Изменить запрошенный запрос{% endblock %}
+
+{% block body %}
+    <h1 class="my-4 text-dark text-center bg-warning">Изменить запрошенный запрос</h1>
+    <div class="text-center">
+        <a href="{{ path('contact_form_index') }}">Вернуться к списку</a>
+    </div>
+
+    {{ include('contact_form/_form.html.twig', {'button_label': 'Изменить'}) }}
+
+{% endblock %}

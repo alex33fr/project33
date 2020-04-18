@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Запись на звонок{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h1 class="text-dark text-center my-5">Запись на звонок</h1>
+
+            <table class="table">
+                <tbody>
+                <tr>
+                    <th>ФИО</th>
+                    <td>{{ contact_form.name }}</td>
+                </tr>
+                <tr>
+                    <th>Телефон</th>
+                    <td>{{ contact_form.phone }}</td>
+                </tr>
+                <tr>
+                    <th>Email</th>
+                    <td>{{ contact_form.email }}</td>
+                </tr>
+                <tr>
+                    <th>Сообщение</th>
+                    <td>{{ contact_form.message }}</td>
+                </tr>
+                </tbody>
+            </table>
+
+        <a href="{{ path('contact_form_index') }}">Вернуться к списку</a>
+
+        <a href="{{ path('contact_form_edit', {'id': contact_form.id}) }}">Изменить </a>
+
+        {{ include('contact_form/_delete_form.html.twig') }}
+    </div>
+
+{% endblock %}

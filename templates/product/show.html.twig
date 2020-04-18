@@ -1,58 +1,42 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Product{% endblock %}
+{% block title %}{{ product.title }}{% endblock %}
 
 {% block body %}
-    <h1>Product</h1>
+    <div class="text-center text-dark my-5 container">
+        <h1>Товар {{ product.title }}</h1>
 
-    <table class="table">
-        <tbody>
+        <table class="table">
+            <tbody>
             <tr>
-                <th>Id</th>
-                <td>{{ product.id }}</td>
-            </tr>
-            <tr>
-                <th>Title</th>
+                <th>Название</th>
                 <td>{{ product.title }}</td>
             </tr>
             <tr>
-                <th>ImageName</th>
-                <td>{{ product.imageName }}</td>
+                <th>Картинка</th>
+                <td><img src="{{ vich_uploader_asset(product, 'imageFile') | imagine_filter('product_filter') }}" alt="{{ product.title }}"></td>
             </tr>
             <tr>
-                <th>ImageSize</th>
-                <td>{{ product.imageSize }}</td>
-            </tr>
-            <tr>
-                <th>UpdatedAt</th>
-                <td>{{ product.updatedAt ? product.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
-            </tr>
-            <tr>
-                <th>Model</th>
+                <th>Модель</th>
                 <td>{{ product.model }}</td>
             </tr>
             <tr>
-                <th>Color</th>
+                <th>Цвет</th>
                 <td>{{ product.color }}</td>
             </tr>
             <tr>
-                <th>DescOne</th>
+                <th>Краткое описание</th>
                 <td>{{ product.descOne }}</td>
             </tr>
             <tr>
-                <th>DescTwo</th>
+                <th>Полное описание</th>
                 <td>{{ product.descTwo }}</td>
             </tr>
-            <tr>
-                <th>CreatedAt</th>
-                <td>{{ product.createdAt ? product.createdAt|date('Y-m-d H:i:s') : '' }}</td>
-            </tr>
-        </tbody>
-    </table>
+            </tbody>
+        </table>
+            <a href="{{ path('product_index') }}">Вернуться к списку</a>
+            <a href="{{ path('product_edit', {'id': product.id}) }}" class="btn btn-warning">Изменить</a>
+        {{ include('product/_delete_form.html.twig') }}
 
-    <a href="{{ path('product_index') }}">back to list</a>
-
-    <a href="{{ path('product_edit', {'id': product.id}) }}">edit</a>
-
-    {{ include('product/_delete_form.html.twig') }}
+    </div>
 {% endblock %}

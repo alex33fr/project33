@@ -39,6 +39,7 @@ class CategoryType extends AbstractType
             ->add('parent', EntityType::class, [
                 'class' => Category::class,
                 'label' => 'Категория',
+                'required' => false,
                 'placeholder' => 'Выберите категорию',
                 'choice_label' => function(Category $category){
                     return $category->getTitle();

@@ -24,7 +24,7 @@
                 {% for categoriesMain in categoriesShow %}
                         <div class="col-lg-9 mb-4">
                             <div class="card">
-                                <img src="{{ vich_uploader_asset(categoriesMain, 'imageFile') | imagine_filter('productBanner_filter')}}" class="card-img-top" alt="{{ categoriesMain.altImage }}">
+                                <img src="{{ vich_uploader_asset(categoriesMain, 'imageFile') | imagine_filter('product_filter')}}" class="card-img-top" alt="{{ categoriesMain.altImage }}">
                                 <div class="card-body">
                                     <h2 class="card-title ">{{ categoriesMain.title }}</h2>
                                     <p class="card-text">{{ categoriesMain.description }}</p>

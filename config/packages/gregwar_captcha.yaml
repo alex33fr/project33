@@ -1,0 +1,7 @@
+gregwar_captcha:
+  width: 156
+  height: 52
+  length: 6
+  quality: 60
+  invalid_message: Неправльный код, попробуйте повторить ещё раз
+
