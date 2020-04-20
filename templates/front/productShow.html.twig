@@ -9,7 +9,7 @@
             <div class="col-lg-1"></div>
                 <div class="col-lg-10">
                     <div class="card mt-4">
-                        <img class="card-img-top img-fluid" src="{{ vich_uploader_asset(product, 'imageFile') | imagine_filter('productBanner_filter') }}" alt="{{ product.altImage }}">
+                        <img class="card-img-top img-fluid" src="{{ vich_uploader_asset(product, 'imageFile') | imagine_filter('productCategoryBanner') }}" alt="{{ product.altImage }}">
                         <div class="card-body my-2">
                             <p class="card-text">{{ product.descTwo }}</p>
                         </div>

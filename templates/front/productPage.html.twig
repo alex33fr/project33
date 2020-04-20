@@ -23,16 +23,23 @@
             {% if categoriesShow is not empty %}
                 {% for categoriesMain in categoriesShow %}
                         <div class="col-lg-9 mb-4">
-                            <div class="card">
-                                <img src="{{ vich_uploader_asset(categoriesMain, 'imageFile') | imagine_filter('product_filter')}}" class="card-img-top" alt="{{ categoriesMain.altImage }}">
-                                <div class="card-body">
-                                    <h2 class="card-title ">{{ categoriesMain.title }}</h2>
-                                    <p class="card-text">{{ categoriesMain.description }}</p>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <h2 class="text-capitalize text-center my-4">{{ categoriesMain.title }}</h2>
+                                    <p>{{ categoriesMain.description |raw }}</p>
+                                </div>
+                                <div class="col-lg-6">
+                                    {% if categoriesMain.imageFile is not empty %}
+                                        <img class="img-fluid rounded" src="{{ vich_uploader_asset(categoriesMain, 'imageFile') | imagine_filter('productCategoryBanner')}}" alt="{{ categoriesMain.altImage }}">
+                                    {% else %}
+                                        <img src="http://placehold.it/400x260" alt="default image">
+                                    {% endif %}
                                 </div>
                             </div>
                         </div>
                 {% endfor %}
             {% endif %}
+
 
             <!-- /.col-lg-3 -->
             {% if products is not empty %}
@@ -42,7 +49,11 @@
                         <div class="carousel-inner" role="listbox">
                             {% for product in products[1:] %}
                                 <div class="carousel-item {%if loop.index == 1%} active {%endif%}">
-                                    <img src="{{ vich_uploader_asset(product, 'imageFile') | imagine_filter('productBanner_filter')}}" alt="{{ product.title }}">
+                                    {% if product.imageFile is not empty %}
+                                        <img src="{{ vich_uploader_asset(product, 'imageFile') | imagine_filter('product_filter')}}" alt="{{ product.title }}">
+                                    {% else %}
+                                        <img src="http://placehold.it/200x200" alt="default image">
+                                    {% endif %}
                                 </div>
                             {% endfor %}
                         </div>
@@ -60,7 +71,13 @@
                     {% for product in products %}
                         <div class="col-lg-4 col-md-6 mb-4">
                             <div class="card h-100 shadow-sm">
-                                <a href="{{ path('productShow', {'id': product.id}) }}"><img class="card-img-top" src="{{ vich_uploader_asset(product, 'imageFile') | imagine_filter('product_filter')}}" alt="{{ product.title }}"></a>
+                                <a href="{{ path('productShow', {'id': product.id}) }}">
+                                    {% if product.imageFile is not empty %}
+                                        <img class="card-img-top" src="{{ vich_uploader_asset(product, 'imageFile') | imagine_filter('product_filter')}}" alt="{{ product.title }}">
+                                    {% else %}
+                                        <img src="http://placehold.it/200x200" alt="default image">
+                                    {% endif %}
+                                </a>
                                 <div class="card-body">
                                     <h4 class="card-title text-center text-dark">
                                         <a href="{{ path('productShow', {'id': product.id}) }}" class="text-dark underlineHover text-decoration-none">{{ product.title }}</a>

@@ -3,8 +3,6 @@
 namespace App\Entity;
 
 use DateTime;
-use Entity\Repository\CategoryRepository;
-use http\Env\Response;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use Doctrine\Common\Collections\ArrayCollection;

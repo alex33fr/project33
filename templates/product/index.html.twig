@@ -23,12 +23,18 @@
         {% for product in products %}
             <tr>
                 <td>{{ product.title }}</td>
-                <td><img src="{{ vich_uploader_asset(product, 'imageFile') | imagine_filter('table_filter') }}" alt="{{ product.title }}"></td>
+                <td>
+                    {% if product.imageFile is not empty %}
+                        <img src="{{ vich_uploader_asset(product, 'imageFile') | imagine_filter('table_filter') }}" alt="{{ product.title }}">
+                    {% else %}
+                        <img src="http://placehold.it/50x50" alt="default image">
+                    {% endif %}
+                </td>
                 <td>{{ product.updatedAt ? product.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
                 <td>{{ product.model }}</td>
                 <td>{{ product.color }}</td>
-                <td>{{ product.descOne | u.truncate(50, '...') }}</td>
-                <td>{{ product.descTwo | u.truncate(50, '...') }}</td>
+                <td>{{ product.descOne | u.truncate(45, '...')  |raw }}</td>
+                <td>{{ product.descTwo | u.truncate(20, '...')  |raw }}</td>
                 <td>{{ product.createdAt ? product.createdAt|date('Y-m-d H:i:s') : '' }}</td>
                 <td>
                     <a href="{{ path('product_show', {'id': product.id}) }}" class="btn-sm btn-secondary text-decoration-none">Показать</a>
@@ -37,11 +43,10 @@
             </tr>
         {% else %}
             <tr>
-                <td colspan="11">Товаров не найдено в базе данных</td>
+                <td colspan="10">Товаров не найдено в базе данных</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
-    <a href="{{ path('product_new') }}">Create new</a>
 </div>
 {% endblock %}

@@ -5,7 +5,6 @@ namespace App\Controller;
 use App\Entity\Category;
 use App\Entity\Product;
 use App\Repository\CategoryRepository;
-use App\Repository\ProductRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -28,10 +27,9 @@ class FrontController extends AbstractController
      * @Route("/products/{title}", name="productsShow", methods={"GET"})
      * @param CategoryRepository $categoryRepository
      * @param Category $category
-     * @param ProductRepository $productRepository
      * @return Response
      */
-    public function productsShow(CategoryRepository $categoryRepository, Category $category, ProductRepository $productRepository): Response
+    public function productsShow(CategoryRepository $categoryRepository, Category $category): Response
     {
 
         $val1 = $category->getLft();

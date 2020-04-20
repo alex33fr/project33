@@ -4,7 +4,7 @@
 
 {% block body %}
 
-<div class="container">
+<div class="container my-4">
     <h1 class="text-center my-4 text-dark">Список категорий</h1>
     <table class="table-responsive-sm text-center table-hover">
         <thead>
@@ -12,7 +12,7 @@
                 <th>Название</th>
                 <th>Картинка</th>
                 <th>Описание</th>
-                <th>Изменинно</th>
+                <th>Изменено</th>
                 <th>Дата создания</th>
                 <th>Lft</th>
                 <th>Rgt</th>
@@ -24,8 +24,14 @@
         {% for category in categories %}
             <tr>
                 <td>{{ category.title }}</td>
-                <td><img src="{{ vich_uploader_asset(category, 'imageFile') | imagine_filter('table_filter') }}" alt="{{ category.title }}"></td>
-                <td>{{ category.description | u.truncate(50, '...') }}</td>
+                <td>
+                    {% if category.imageFile is not empty %}
+                    <img src="{{ vich_uploader_asset(category, 'imageFile') | imagine_filter('table_filter') }}" alt="{{ category.title }}">
+                    {% else %}
+                        <img src="http://placehold.it/50x50" alt="default image">
+                    {% endif %}
+                </td>
+                <td>{{ category.description | u.truncate(40, true, '...')  | raw }}</td>
                 <td>{{ category.updatedAt ? category.updatedAt|date('d-m-Y H:i') : '' }}</td>
                 <td>{{ category.createdAt ? category.createdAt|date('d-m-Y H:i') : '' }}</td>
                 <td>{{ category.lft }}</td>

@@ -4,10 +4,10 @@ namespace App\Form;
 
 use App\Entity\Category;
 use App\Entity\Product;
+use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\MoneyType;
-use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -19,19 +19,18 @@ class ProductType extends AbstractType
     {
         $builder
             ->add('title', TextType::class, [
-                'label' => 'Название продукта',
+                'label' => 'Название продукта *',
                 'required' => true
             ])
             ->add('imageFile', VichImageType::class, [
                 'allow_delete' => true,
-                'download_link' => true,
                 'download_uri' => true,
                 'download_label' => 'Скачать',
-                'label' => 'Картинка',
-                'required' => true
+                'label' => 'Картинка *',
+                'required' => false
             ])
             ->add('altImage', TextType::class,[
-                'label' => 'Alt SEO для картинки',
+                'label' => 'Alt SEO для картинки *',
                 'required' => false
             ])
             ->add('model', TextType::class, [
@@ -42,11 +41,11 @@ class ProductType extends AbstractType
                 'label' => 'Цвет',
                 'required' => false
             ])
-            ->add('descOne', TextareaType::class, [
-                'label' => 'Краткое описание',
+            ->add('descOne', CKEditorType::class, [
+                'label' => 'Краткое описание *',
                 'required' => false
             ])
-            ->add('descTwo', TextareaType::class, [
+            ->add('descTwo', CKEditorType::class, [
                 'label' => 'Полное описание',
                 'required' => false
             ])
@@ -57,7 +56,7 @@ class ProductType extends AbstractType
             ])
             ->add('category', EntityType::class, [
                 'class' => Category::class,
-                'label' => 'Категория',
+                'label' => 'Выбрать категорию которой пренадлежит товар *',
                 'placeholder' => 'Выберите категорию',
                 'required' => true,
                 'choice_label' => function(Category $category){
@@ -66,8 +65,7 @@ class ProductType extends AbstractType
                 'group_by' => function(Category $category) {
                     return $category->getParent();
                 }
-            ])
-        ;
+            ]);
     }
 
 

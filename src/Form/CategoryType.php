@@ -3,9 +3,9 @@
 namespace App\Form;
 
 use App\Entity\Category;
+use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -17,24 +17,23 @@ class CategoryType extends AbstractType
     {
         $builder
             ->add('title', TextType::class, [
-                'label' => 'Название категории',
+                'label' => 'Название категории *',
                 'required' => true
             ])
             ->add('imageFile', VichImageType::class, [
                 'allow_delete' => true,
-                'download_link' => true,
                 'download_uri' => true,
                 'download_label' => 'Скачать',
-                'label' => 'Картинка',
-                'required' => true
+                'label' => 'Картинка ',
+                'required' => false
             ])
             ->add('altImage', TextType::class,[
                 'label' => 'Alt SEO для картинки',
                 'required' => false
             ])
-            ->add('description', TextareaType::class, [
+            ->add('description', CKEditorType::class, [
                 'label' => 'Описание',
-                'required' => false
+                'required' => false,
             ])
             ->add('parent', EntityType::class, [
                 'class' => Category::class,
@@ -47,9 +46,7 @@ class CategoryType extends AbstractType
                 'group_by' => function(Category $category) {
                     return $category->getParent();
                 }
-                ]);
-
-
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver)

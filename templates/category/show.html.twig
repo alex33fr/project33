@@ -1,10 +1,10 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Категория{% endblock %}
+{% block title %}{{ category.title }}{% endblock %}
 
 {% block body %}
     <h1 class="text-center my-4 text-dark">Категория: {{ category.title }}</h1>
-<div class="container">
+<div class="container my-4">
     <table class="table">
         <tbody>
             <tr>
@@ -13,11 +13,11 @@
             </tr>
             <tr>
                 <th>Картинка</th>
-                <td><img src="{{ vich_uploader_asset(category, 'imageFile') | imagine_filter('productBanner_filter') }}" alt="{{ category.title }}"></td>
+                <td><img src="{{ vich_uploader_asset(category, 'imageFile') | imagine_filter('product_filter') }}" alt="{{ category.title }}"></td>
             </tr>
             <tr>
                 <th>Описание</th>
-                <td>{{ category.description }}</td>
+                <td>{{ category.description |raw}}</td>
             </tr>
             <tr>
                 <th>Именинно</th>
@@ -41,10 +41,8 @@
             </tr>
         </tbody>
     </table>
-    <a href="{{ path('category_index') }}" class="btn btn-secondary">Вернуться к списку</a>
-
-    <a href="{{ path('category_edit', {'id': category.id}) }}" class="btn btn-warning">Изменить</a>
-
+    <a href="{{ path('category_index') }}" class="btn btn-outline-secondary">Вернуться к списку</a>
+    <a href="{{ path('category_edit', {'id': category.id}) }}" class="btn btn-outline-warning">Изменить</a>
     {{ include('category/_delete_form.html.twig') }}
 </div>
 {% endblock %}

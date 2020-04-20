@@ -30,11 +30,12 @@ class ContactFormType extends AbstractType
             ])
             ->add('captcha', CaptchaType::class,[
                 'label' => 'Введите код с картинки* :',
-                'distortion' => false,
+                'distortion' => false
 
             ])
             ->add('message', TextareaType::class, [
-                'label' => 'Сообщение *'
+                'label' => 'Сообщение *',
+                'required'   => true
             ])
         ;
     }
