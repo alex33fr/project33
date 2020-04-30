@@ -21,7 +21,7 @@ liip_imagine:
 
         product_filter:
             # adjust the image quality to 75%
-            quality: 75
+            quality: 90
             # list of transformations to apply (the "filters")
             filters:
                 # create a thumbnail: set size to 120x90 and use the "outbound" mode
@@ -31,9 +31,21 @@ liip_imagine:
                 # 4px larger to create a 2px border around the final image
                 # background: { size: [124, 94], position: center, color: '#000000' }
 
-        productCategoryBanner:
+        productCarousel:
             # adjust the image quality to 75%
-            quality: 75
+            quality: 90
+            # list of transformations to apply (the "filters")
+            filters:
+                # create a thumbnail: set size to 120x90 and use the "outbound" mode
+                # to crop the image when the size ratio of the input differs
+                downscale: { max: [900, 350] }
+                # create a 2px black border: center the thumbnail on a black background
+                # 4px larger to create a 2px border around the final image
+                background: { size: [902, 354], position: center, color: '#f7f7f7' }
+
+        categoryBanner:
+            # adjust the image quality to 75%
+            quality: 90
             # list of transformations to apply (the "filters")
             filters:
                 # create a thumbnail: set size to 120x90 and use the "outbound" mode

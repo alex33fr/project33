@@ -1,5 +1,10 @@
 <div class="container min-vh-100">
-    <section class="">
+    <section>
+        {% for message in app.flashes('success') %}
+            <div class="alert alert-success text-center">
+                {{ message }}
+            </div>
+        {% endfor %}
         <div class="container">
             <h2 class="text-center mt-3">Заказать звонок</h2>
             <div class="row">
@@ -9,13 +14,7 @@
                         {{ form_widget(form) }}
                         <button class="btn btn-dark">{{ button_label|default('Отправить') }}</button>
                         {{ form_end(form) }}
-                        {% for message in app.flashes('success') %}
-                            <div class="alert alert-success">
-                                {{ message }}
-                            </div>
-                        {% endfor %}
                     </div>
-
                 </div>
             </div>
         </div>

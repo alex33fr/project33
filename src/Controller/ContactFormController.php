@@ -45,7 +45,8 @@ class ContactFormController extends AbstractController
             $entityManager->persist($contactForm);
             $entityManager->flush();
 
-            return $this->redirectToRoute('contact_form_index');
+            $this->addFlash('success', 'Спасибо! Ваш запрос получен, ожидайте ответа');
+            return $this->redirectToRoute('contact_form_new');
         }
 
         return $this->render('contact_form/new.html.twig', [

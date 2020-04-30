@@ -132,6 +132,9 @@
             <li class="nav-item">
                 <a class="nav-link text-dark" href="{{ path('productsShow', {'title' : 'пробковые покрытия'}) }}">ПРОБКОВЫЕ ПОКРЫТИЯ</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark" href="{{ path('productsShow', {'title' : 'мебель'}) }}">МЕБЕЛЬ</a>
+            </li>
         </ul>
     </div>
 </nav>
@@ -149,10 +152,11 @@
 
 {% block javascripts %}
     {{ encore_entry_script_tags('app') }}
+    {% if not is_granted('ROLE_ADMIN') %}
     <div class="copy_2W logo_1D _bottom_2g hoverBox_10 logoIcon_2z cssLeaf_1k">
         <script src="//code.jivosite.com/widget/hKHG85pzID" async></script>
     </div>
-
+    {% endif %}
 {% endblock %}
 
 
