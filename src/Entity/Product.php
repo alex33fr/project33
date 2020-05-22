@@ -84,7 +84,6 @@ class Product
      * @ORM\Column(type="float", nullable=true)
      */
     private $price;
-
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */

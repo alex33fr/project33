@@ -68,7 +68,6 @@
 {% endif %}
 
 
-
 <!-- HEADER NAVBAR -->
 <div class="container">
     <div class="row mt-2 mb-2">
@@ -108,7 +107,16 @@
     <div>
         <ul class="nav font-weight-bold text-uppercase">
             <li class="nav-item">
+                <a class="nav-link text-dark" href="{{ path('productsShow', {'title' : 'окна'}) }}">ОКНА</a>
+            </li>
 
+{#            {% if categoriesShow is not empty %}#}
+{#                {% for categories in categoriesShow %}#}
+{#                                <h2 class="text-capitalize text-center my-4">{{ categories.title }}</h2>#}
+{#                {% endfor %}#}
+{#            {% endif %}#}
+
+            <li class="nav-item">
                 <a class="nav-link text-dark" href="{{ path('productsShow', {'title' : 'окна'}) }}">ОКНА</a>
             </li>
             <li class="nav-item">
@@ -139,14 +147,13 @@
     </div>
 </nav>
 <!-- NAVBAR -->
-
+{% for message in app.flashes('success') %}
+<div class="alert alert-success text-center">
+    {{ message }}
+</div>
+{% endfor %}
 
 {% block body %}
-    {% for message in app.flashes('success') %}
-        <div class="alert alert-success">
-            {{ message }}
-        </div>
-    {% endfor %}
 {% endblock %}
 
 

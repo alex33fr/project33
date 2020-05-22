@@ -4,6 +4,103 @@
 
 {% block body %}
 
-    {{ include('contact_form/_form.html.twig') }}
+    <!-- Breadcumb Area -->
+    <div class="breadcumb_area bg-light">
+        <div class="container h-100">
+            <div class="row h-100 align-items-center">
+                <div class="col-12">
+                    <ol class="breadcrumb text-dark bg-light">
+                        <li class="breadcrumb-item"><a href="{{ path('home') }}" class="text-dark text-decoration-none">Главная</a></li>
+                        <li class="breadcrumb-item active">Заказать звонок</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Breadcumb Area -->
+
+    <div class="message_now_area section_padding_50" id="contact">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12 col-lg-6">
+                    <div class="popular_section_heading mb-5 text-center">
+                        <h3 class="mb-3">Формулировка для заказа звонка</h3>
+                        <p></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-12 col-lg-4">
+                    <div class="single-contact-info mb-30">
+                        <i class="icofont-phone text-center"></i>
+                        <p class="text-center">8 967 091 - 1000 <br> 8 968 741 - 6868
+                        </p>
+                    </div>
+                </div>
+                <div class="col-12 col-lg-4">
+                    <div class="single-contact-info mb-30">
+                        <i class="icofont-ui-email text-center"></i>
+                        <p class="text-center">centrpr0@yandex.ru<br>centrpr0@yandex.ru</p>
+                    </div>
+                </div>
+                <div class="col-12 col-lg-4 text-right">
+                    <div class="single-contact-info mb-30">
+                        <i class="icofont-home text-center"></i>
+                        <p class="text-center"><strong>2 этаж</strong>, ул.Пограничная д.32<br>г. Сергиев Посад</p>
+                    </div>
+                </div>
+
+                <div class="col-12">
+                    <div class="contact_from mb-5">
+                        <form action="" method="post" id="main_contact_form">
+                            <div class="contact_input_area">
+                                <div id="success_fail_info"></div>
+                                <div class="row">
+                                    {{ form_start(form) }}
+                                    <div class="col-md-12">
+                                        <div class="form-group text-center">
+                                            {{ form_row(form.name, {'attr': {'class': 'bg-white border border-secondary form-control', 'type': 'text'}}) }}
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            {{ form_row(form.email, {'attr': {'class': 'bg-white border border-secondary form-control', 'type': 'email'}}) }}
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            {{ form_row(form.phone, {'attr': {'class': 'bg-white border border-secondary form-control', 'type': 'tel'}}) }}
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="form-group">
+                                            {{ form_row(form.message, {'attr': {'class': 'bg-white border border-secondary form-control', 'rows': '5', 'type': 'text'}}) }}
+                                        </div>
+                                    </div>
+                                    <div class="col-6 text-center">
+                                        <div class="form-group">
+                                            {{ form_row(form.captcha, {'attr': {'class': 'bg-white border border-secondary form-control', 'type': 'text', 'alt': 'капча'}, 'label': 'Введите код с картинки*'}) }}
+                                        </div>
+                                    </div>
+                                    <div class="col-6 text-center mt-5">
+                                        <button class="btn btn-outline-secondary w-100">{{ button_label|default('Отправить') }}</button>
+                                    </div>
+                                    {{ form_end(form)}}
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                {#                <div class="col-12">#}
+                {#                    <div class="google-map">#}
+                {#                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d158858.4733933767!2d-0.24167960602552738!3d51.52855824355498!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47d8a00baf21de75%3A0x52963a5addd52a99!2sLondon%2C+UK!5e0!3m2!1sen!2sbd!4v1565062036569!5m2!1sen!2sbd" allowfullscreen></iframe>#}
+                {#                    </div>#}
+                {#                </div>#}
+            </div>
+        </div>
+    </div>
+    <!-- Message Now Area -->
 
 {% endblock %}

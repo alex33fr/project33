@@ -1,11 +1,30 @@
 @import "app.css";
 
-$btn-border-radius: 0.2rem;
-$red:     #da251c !default;
-$carousel-control-color: #da251c;
-$carousel-caption-color:#da251c;
-$carousel-indicator-active-bg:#da251c;
 
+$btn-border-radius: 0.2rem;
+$red:#da251c !default;
+$carousel-control-color: #da251c;
+$carousel-caption-color: #da251c;
+$carousel-indicator-active-bg: #da251c;
+$zindex-sticky: 1020 !default;
+
+@import "node_modules/bootstrap/scss/functions";
+@import "node_modules/bootstrap/scss/variables";
+@import "node_modules/bootstrap/scss/mixins/_breakpoints";
+
+@include media-breakpoint-up(sm) {
+    .custom-class {
+    }
+}
+@include media-breakpoint-up(md) {
+
+}
+@include media-breakpoint-up(lg) {
+
+}
+@include media-breakpoint-up(xl) {
+
+}
 
 @font-face {
     font-family: 'Montserrat';
