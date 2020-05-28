@@ -14,32 +14,33 @@
         </div>
     {% endif %}
 
-    <div class="wrapper fadeInDown">
-        <div id="formContent">
-            <!-- Tabs Titles -->
-            <!-- Icon -->
-            <div class="fadeIn first">
-                <img src="{{ asset('images/logotype.png') }}" alt="Logotype" />
+    <div class="container min-vh-100">
+        <div class="row">
+            <div class="col-12 first mt-5 text-center">
+                <a href="{{ path('home') }}"><img src="{{ asset('images/logotype.png') }}" alt="Logotype" /></a>
                 <h2>Окна Центр Продаж</h2>
             </div>
             <!-- Login Form -->
-            <div class="m-5 zindex">
+            <div class="col-4"></div>
+            <div class="col-4 mt-5">
                 <form>
                     <label for="inputEmail">Емайл</label><input type="email" value="{{ last_username }}" id="inputEmail" class="fadeIn second form-control" name="email" placeholder="Емайл" required autofocus>
                     <label for="inputPassword">Пароль</label><input type="password" id="inputPassword" class="fadeIn third form-control" name="password" placeholder="Пароль" required>
                     <input type="hidden" class="fadeIn fourth" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
-                    <button class="btn btn-lg btn-primary mt-2" type="submit">
+                    <button class="btn btn-block btn-outline-secondary mt-2" type="submit">
                         Войти
                     </button>
                 </form>
             </div>
+            <div class="col-4"></div>
             <!-- Remind Passowrd -->
-            <div id="formFooter">
+            <div class="col-12 my-5 text-center">
                 <a class="underlineHover text-decoration-none text-dark" href="{{path('home')}}">Вернуться на сайт</a>
             </div>
-
         </div>
+
     </div>
+
 
     {#
         Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.

@@ -9,6 +9,15 @@ nav a:hover {
 body{
     font-family: "Montserrat_ru", sans-serif;
 }
+.captcha_image{
+    margin-bottom: 10px;
+    border: 1px solid #da251c;
+}
+
+.mt120{
+    margin-top: 120px;
+}
+
 
 /*!* STRUCTURE *!*/
 

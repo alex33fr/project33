@@ -19,43 +19,14 @@
     </div>
     <!-- Breadcumb Area -->
 
-    <div class="message_now_area section_padding_50" id="contact">
         <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-12 col-lg-6">
-                    <div class="popular_section_heading mb-5 text-center">
-                        <h3 class="mb-3">Формулировка для заказа звонка</h3>
-                        <p></p>
-                    </div>
-                </div>
-            </div>
-
             <div class="row">
-                <div class="col-12 col-lg-4">
-                    <div class="single-contact-info mb-30">
-                        <i class="icofont-phone text-center"></i>
-                        <p class="text-center">8 967 091 - 1000 <br> 8 968 741 - 6868
-                        </p>
+                <div class="col-8 mb-5">
+                    <div class="col-12 mb-5 text-center">
+                        <h3 class="my-3">Форма для заказа звонка</h3>
                     </div>
-                </div>
-                <div class="col-12 col-lg-4">
-                    <div class="single-contact-info mb-30">
-                        <i class="icofont-ui-email text-center"></i>
-                        <p class="text-center">centrpr0@yandex.ru<br>centrpr0@yandex.ru</p>
-                    </div>
-                </div>
-                <div class="col-12 col-lg-4 text-right">
-                    <div class="single-contact-info mb-30">
-                        <i class="icofont-home text-center"></i>
-                        <p class="text-center"><strong>2 этаж</strong>, ул.Пограничная д.32<br>г. Сергиев Посад</p>
-                    </div>
-                </div>
-
-                <div class="col-12">
                     <div class="contact_from mb-5">
-                        <form action="" method="post" id="main_contact_form">
-                            <div class="contact_input_area">
-                                <div id="success_fail_info"></div>
+                        <form>
                                 <div class="row">
                                     {{ form_start(form) }}
                                     <div class="col-md-12">
@@ -78,20 +49,39 @@
                                             {{ form_row(form.message, {'attr': {'class': 'bg-white border border-secondary form-control', 'rows': '5', 'type': 'text'}}) }}
                                         </div>
                                     </div>
-                                    <div class="col-6 text-center">
+                                    <div class="col-4"></div>
+                                    <div class="col-4 text-center mt-1">
                                         <div class="form-group">
-                                            {{ form_row(form.captcha, {'attr': {'class': 'bg-white border border-secondary form-control', 'type': 'text', 'alt': 'капча'}, 'label': 'Введите код с картинки*'}) }}
+                                            {{ form_row(form.captcha, {'attr': {'class': 'bg-white border border-secondary form-control', 'type': 'text', 'alt': 'капча'}, 'label': 'Введите код с картинки *'}) }}
                                         </div>
                                     </div>
-                                    <div class="col-6 text-center mt-5">
-                                        <button class="btn btn-outline-secondary w-100">{{ button_label|default('Отправить') }}</button>
+                                    <div class="col-4"></div>
+                                    <div class="col-12 text-center mb-5">
+                                        <button class="btn btn-outline-danger w-100">{{ button_label|default('Отправить') }}</button>
                                     </div>
                                     {{ form_end(form)}}
                                 </div>
-                            </div>
                         </form>
                     </div>
                 </div>
+
+                <!--Grid column-->
+                <div class="col-4 text-center mt120">
+                    <ul class="list-unstyled mb-0">
+                        <li><i class="fas fa-map-marker-alt fa-2x"></i>
+                            <p class="text-center"><strong>2 этаж</strong>, ул.Пограничная д.32<br>г. Сергиев Посад</p>
+                        </li>
+
+                        <li><i class="fas fa-phone mt-4 fa-2x"></i>
+                            <p class="text-center">8 967 091 - 1000 <br> 8 968 741 - 6868</p>
+                        </li>
+
+                        <li><i class="fas fa-envelope mt-4 fa-2x"></i>
+                            <p class="text-center">centrpr0@yandex.ru<br>centrpr0@yandex.ru</p>
+                        </li>
+                    </ul>
+                </div>
+                <!--Grid column-->
 
                 {#                <div class="col-12">#}
                 {#                    <div class="google-map">#}
@@ -100,7 +90,6 @@
                 {#                </div>#}
             </div>
         </div>
-    </div>
     <!-- Message Now Area -->
 
 {% endblock %}
