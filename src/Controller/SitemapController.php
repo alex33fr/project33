@@ -26,7 +26,7 @@ class SitemapController extends AbstractController
         // Creer les URLs "Statiques"
         $urls[] = ['loc' => $this->generateUrl('home')];
         $urls[] = ['loc' => $this->generateUrl('contact_form_new')];
-        $urls[] = ['loc' => $this->generateUrl('app_register')];
+
 
         // On recupere les URLs Dynamiques
         foreach ($this->getDoctrine()->getRepository(Category::class)->findAll() as $category){

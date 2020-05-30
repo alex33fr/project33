@@ -33,7 +33,7 @@ security:
     access_control:
         - { path: '^/(%app.locales%)/back', roles: ROLE_ADMIN }
         - { path: '^/(%app.locales%)/login', roles: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: '^/(%app.locales%)/register', roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: '^/(%app.locales%)/register', roles: ROLE_ADMIN }
         - { path: ^/efconnect, role: ROLE_ADMIN }
         - { path: ^/elfinder, role: ROLE_ADMIN }
         - { path: '^/(%app.locales%)/', roles: IS_AUTHENTICATED_ANONYMOUSLY }

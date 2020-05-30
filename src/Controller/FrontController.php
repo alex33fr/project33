@@ -23,24 +23,12 @@ class FrontController extends AbstractController
         ]);
     }
 
-//    /**
-//     * @Route("/test", name="test")
-//     * @param CategoryRepository $categoryRepository
-//     * @param Category $category
-//     * @return Response
-//     */
-//    public function baseHome(CategoryRepository $categoryRepository, Category $category): Response
+//    public function categoryList()
 //    {
-//        $val1 = $category->getLft();
-//        $val2 = $category->getRgt();
 //
-//        $categoriesShow = $categoryRepository->findByLeftAndRight($val1,$val2, 0);
-//
-//        dd($categoriesShow);
-//
+//        $categories = $this->getDoctrine()->getRepository(Category::class)->findAll();
 //        return $this->render('base.html.twig', [
-//
-//            'categoriesShow' => $categoriesShow,
+//            'categories' => $categories,
 //        ]);
 //    }
 

@@ -22,7 +22,7 @@
                             <div class="card-body">
                                 <ul class="list-unstyled">
                                     <li>Название: {{ product.title }}</li>
-                                    <li>Цена: {{ product.price }} руб.</li>
+                                    {% if product.price is not empty %}<li>{{ product.price }} руб.</li>{% else %}{% endif %}
                                     <li>Модель: {{ product.model }}</li>
                                     <li>Цвет: {{ product.color }}</li>
                                 </ul>

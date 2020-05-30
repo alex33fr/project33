@@ -7,6 +7,7 @@ use Exception;
 use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ProductRepository")
@@ -88,6 +89,15 @@ class Product
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $altImage;
+
+    /**
+     * @var string
+     *
+     * @Gedmo\Slug(fields={"title"})
+     *
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $slug;
 
     function __construct()
     {
@@ -258,6 +268,18 @@ class Product
     public function setAltImage(?string $altImage): self
     {
         $this->altImage = $altImage;
+
+        return $this;
+    }
+
+    public function getSlug(): ?string
+    {
+        return $this->slug;
+    }
+
+    public function setSlug(?string $slug): self
+    {
+        $this->slug = $slug;
 
         return $this;
     }
